@@ -2,6 +2,7 @@ class Album < ApplicationRecord
   has_many :album_artists
    has_many :artists, :through => :album_artists
 
+  scope :rock, -> { where(genre: "Rock") }
   # has_and_belongs_to_many(:artists)
 
   has_many :songs, dependent: :destroy
@@ -13,6 +14,7 @@ class Album < ApplicationRecord
   def titleize_album
     self.name = self.name.titleize
   end
+
 end
 
 
